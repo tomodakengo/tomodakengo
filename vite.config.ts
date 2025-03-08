@@ -4,6 +4,7 @@ import themePlugin from "@replit/vite-plugin-shadcn-theme-json";
 import path, { dirname } from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { fileURLToPath } from "url";
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -24,6 +25,16 @@ export default defineConfig({
         ),
       ]
       : []),
+    {
+      name: 'copy-404-html',
+      closeBundle() {
+        // ビルド後に404.htmlをdist/publicにコピー
+        if (fs.existsSync('client/404.html')) {
+          fs.copyFileSync('client/404.html', 'dist/public/404.html');
+          console.log('✓ 404.html copied to dist/public');
+        }
+      }
+    }
   ],
   resolve: {
     alias: {
