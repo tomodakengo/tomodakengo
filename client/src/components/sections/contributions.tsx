@@ -13,14 +13,14 @@ const contributions = [
 
 export function Contributions() {
   return (
-    <section id="contributions" className="min-h-screen flex items-center justify-center px-4">
+    <section id="contributions" className="min-h-screen flex items-center justify-center p-4 md:p-8">
       <div className="max-w-3xl w-full">
         <SectionHeading>Contributions</SectionHeading>
-        <div className="grid gap-6">
+        <div className="grid gap-4 md:gap-6">
           {contributions.map((contribution) => (
-            <Card key={contribution.url}>
+            <Card key={contribution.url} className="transition-shadow hover:shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-base md:text-lg">
                   <FiGithub className="h-5 w-5" />
                   {contribution.title}
                 </CardTitle>
@@ -28,7 +28,7 @@ export function Contributions() {
               <CardContent>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {contribution.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <Badge key={tag} variant="outline" className="text-sm">
                       {tag}
                     </Badge>
                   ))}
@@ -37,7 +37,7 @@ export function Contributions() {
                   href={contribution.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-900 hover:underline"
+                  className="text-gray-900 hover:underline text-sm md:text-base"
                 >
                   View Contribution →
                 </a>

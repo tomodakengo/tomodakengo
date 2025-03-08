@@ -17,25 +17,25 @@ const projects = [
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="min-h-screen flex items-center justify-center px-4">
+    <section id="portfolio" className="min-h-screen flex items-center justify-center p-4 md:p-8">
       <div className="max-w-3xl w-full">
         <SectionHeading>Portfolio</SectionHeading>
-        <div className="grid gap-6">
+        <div className="grid gap-4 md:gap-6">
           {projects.map((project) => (
-            <Card key={project.url}>
+            <Card key={project.url} className="transition-shadow hover:shadow-lg">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
                   <FiGithub className="h-5 w-5" />
                   {project.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">{project.description}</p>
+                <p className="text-gray-600 text-sm md:text-base">{project.description}</p>
                 <a
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-900 hover:underline mt-2 inline-block"
+                  className="text-gray-900 hover:underline mt-2 inline-block text-sm md:text-base"
                 >
                   View Project →
                 </a>

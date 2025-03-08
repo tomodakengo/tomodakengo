@@ -10,7 +10,7 @@ const menuItems = [
 
 export function NavMenu() {
   return (
-    <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50">
+    <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden md:block">
       <ul className="space-y-4">
         {menuItems.map((item) => (
           <li key={item.href}>

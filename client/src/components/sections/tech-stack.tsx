@@ -14,15 +14,15 @@ const technologies = [
 
 export function TechStack() {
   return (
-    <section id="tech-stack" className="min-h-screen flex items-center justify-center px-4">
+    <section id="tech-stack" className="min-h-screen flex items-center justify-center p-4 md:p-8">
       <div className="max-w-3xl w-full">
         <SectionHeading>Tech Stack</SectionHeading>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 md:gap-3">
           {technologies.map((tech) => (
             <Badge
               key={tech}
               variant="secondary"
-              className="text-base py-2 px-4"
+              className="text-sm md:text-base py-1.5 md:py-2 px-3 md:px-4"
             >
               {tech}
             </Badge>
