@@ -46,6 +46,6 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
   },
-  // GitHub Pages用の設定
+  // GitHub Pages用の設定 - package.jsonのhomepageから取得
   base: `/${repoName}/`,
 });
