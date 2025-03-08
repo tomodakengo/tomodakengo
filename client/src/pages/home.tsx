@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="relative">
       <NavMenu />
-      <main className="scroll-smooth">
+      <main className="scroll-smooth md:pl-32">
         <Hero />
         <Portfolio />
         <TechStack />
