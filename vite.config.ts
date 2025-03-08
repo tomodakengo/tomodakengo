@@ -8,7 +8,7 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// GitHub Pages のリポジトリ名を指定 - ユーザーが後で自分のリポジトリ名に変更する必要があります
+// GitHub Pages のリポジトリ名を指定
 const repoName = "tomodakengo";
 
 export default defineConfig({
@@ -28,7 +28,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "client", "src"),
-      "@shared": path.resolve(__dirname, "shared"),
     },
   },
   root: path.resolve(__dirname, "client"),
