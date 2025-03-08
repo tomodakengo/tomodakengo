@@ -4,22 +4,20 @@
   <meta charset="utf-8">
   <title>リダイレクト中...</title>
   <script type="text/javascript">
-    // tomodakengoをあなたのリポジトリ名に置き換えてください
-    var segmentCount = 1;
+    // GitHub Pages用のリダイレクト
     var repoName = "tomodakengo";
+    var segmentCount = 1;
     
     var l = window.location;
-    l.replace(
-      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-      l.pathname.split('/').slice(0, 1 + segmentCount).join('/') + '/?p=/' +
-      l.pathname.slice(1).split('/').slice(segmentCount).join('/').replace(/&/g, '~and~') +
-      (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-      l.hash
-    );
+    var basePath = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                  '/' + repoName + '/';
+                  
+    // メインページの#/に直接リダイレクト
+    window.location.href = basePath + '#/';
   </script>
 </head>
 <body>
   <h1>リダイレクト中...</h1>
-  <a href="/">ここをクリックして戻る</a>
+  <p>自動的にリダイレクトされない場合は、<a href="/tomodakengo/#/">ここをクリック</a>してください。</p>
 </body>
 </html> 

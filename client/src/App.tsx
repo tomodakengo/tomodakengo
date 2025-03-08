@@ -8,16 +8,26 @@ import Home from "@/pages/home";
 
 // ハッシュベースのロケーションフックを実装
 const useHashLocation = () => {
+  // 初期ロード時にハッシュが空なら"#/"を設定
+  useEffect(() => {
+    if (window.location.hash === "") {
+      window.location.hash = "/";
+    }
+  }, []);
+
   const [location, setLocation] = useState(
     window.location.hash.replace("#", "") || "/"
   );
 
   const handleHashChange = useCallback(() => {
-    setLocation(window.location.hash.replace("#", "") || "/");
+    const hashPath = window.location.hash.replace("#", "") || "/";
+    setLocation(hashPath);
   }, []);
 
   useEffect(() => {
     window.addEventListener("hashchange", handleHashChange);
+    // 初期ロード時にもハッシュの状態を反映
+    handleHashChange();
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, [handleHashChange]);
 

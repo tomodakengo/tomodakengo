@@ -1,8 +1,9 @@
 {
-  "name": "rest-express",
+  "name": "r",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
+  "homepage": "https://tomodakengo.github.io/tomodakengo/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -47,5 +47,5 @@ export default defineConfig({
     emptyOutDir: true,
   },
   // GitHub Pages用の設定
-  base: process.env.NODE_ENV === "production" ? `/${repoName}/` : "/",
+  base: `/${repoName}/`,
 });

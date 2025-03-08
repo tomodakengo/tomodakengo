@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>Tomoda Portfolio</title>
+    <base href="/tomodakengo/">
     
     <!-- GitHub Pages用のSPAリダイレクトスクリプト -->
     <script type="text/javascript">
@@ -17,6 +18,14 @@
           );
         }
       }(window.location))
+    </script>
+    
+    <!-- 初期ロード時にハッシュルーティングを確認 -->
+    <script type="text/javascript">
+      // ハッシュがない場合は追加
+      if (!window.location.hash) {
+        window.location.hash = '/';
+      }
     </script>
   </head>
   <body>
