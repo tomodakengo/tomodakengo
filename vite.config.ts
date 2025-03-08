@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // GitHub Pages のリポジトリ名を指定 - ユーザーが後で自分のリポジトリ名に変更する必要があります
-const repoName = "TomodaPortfolio";
+const repoName = "tomodakengo";
 
 export default defineConfig({
   plugins: [
