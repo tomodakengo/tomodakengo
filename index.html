@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>友田健吾のポートフォリオ</title>
+  <title>Tomoda Kengo - Portfolio</title>
   <style>
     :root {
       --bg-color: #f8f9fa;
@@ -12,6 +12,8 @@
       --header-color: #334155;
       --card-bg: #ffffff;
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --badge-bg: #e2e8f0;
+      --badge-text: #334155;
     }
 
     * {
@@ -47,272 +49,344 @@
       padding: 0 2rem;
     }
 
-    header {
-      background-color: var(--header-color);
-      color: white;
-      padding: 1rem 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 100;
-      box-shadow: var(--shadow);
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .nav-links a {
-      color: white;
-    }
-
-    main {
-      margin-top: 70px;
-      padding: 2rem 0;
-    }
-
-    section {
-      margin-bottom: 4rem;
-      scroll-margin-top: 80px;
-    }
-
-    .hero {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 4rem 0;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
-    .card-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
     .card {
       background-color: var(--card-bg);
       border-radius: 8px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      transition: box-shadow 0.3s ease;
     }
 
-    .card-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      background-color: #eee;
+    .card:hover {
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 0.9rem;
+      gap: 0.5rem;
     }
 
     .card-content {
-      padding: 1.5rem;
+      color: #4b5563;
     }
 
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 2rem 0;
-    }
-
-    .tech-badge {
-      background-color: var(--accent-color);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      display: block;
+    .badge {
+      display: inline-block;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      margin-right: 0.5rem;
       margin-bottom: 0.5rem;
-      font-weight: bold;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: inherit;
+    .badge-outline {
+      background-color: transparent;
+      border: 1px solid var(--badge-bg);
     }
 
-    button {
+    .section-heading {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -0.5rem;
+      left: 0;
+      width: 3rem;
+      height: 0.25rem;
       background-color: var(--accent-color);
-      color: white;
-      border: none;
-      padding: 0.8rem 1.5rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
     }
 
-    footer {
-      background-color: var(--header-color);
-      color: white;
-      padding: 2rem 0;
+    .nav-menu {
+      position: fixed;
+      left: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+    }
+
+    .nav-menu ul {
+      list-style: none;
+    }
+
+    .nav-menu li {
+      margin-bottom: 1rem;
+    }
+
+    .nav-menu a {
+      color: #4b5563;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover {
+      color: #111827;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .section-content {
+      max-width: 48rem;
+      width: 100%;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-col {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .justify-center {
+      justify-content: center;
+    }
+
+    .gap-2 {
+      gap: 0.5rem;
+    }
+
+    .gap-4 {
+      gap: 1rem;
+    }
+
+    .gap-6 {
+      gap: 1.5rem;
+    }
+
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+
+    .rounded-full {
+      border-radius: 9999px;
+    }
+
+    .bg-gray-200 {
+      background-color: #e5e7eb;
+    }
+
+    .text-center {
       text-align: center;
     }
 
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: transparent;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #f9fafb;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .social-icon {
+      color: #4b5563;
+      transition: color 0.3s ease;
+      font-size: 1.5rem;
+    }
+
+    .social-icon:hover {
+      color: #111827;
+    }
+
     @media (max-width: 768px) {
-      .nav-links {
+      .nav-menu {
         display: none;
       }
-      
-      .hero h1 {
-        font-size: 2rem;
+
+      .section-content {
+        padding: 1rem;
       }
-      
-      .card-container {
-        grid-template-columns: 1fr;
+
+      .flex-md-row {
+        flex-direction: column;
+      }
+
+      .text-md-left {
+        text-align: center;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .flex-md-row {
+        flex-direction: row;
+      }
+
+      .text-md-left {
+        text-align: left;
+      }
+
+      main {
+        padding-left: 8rem;
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">Tomoda Kengo</div>
-        <div class="nav-links">
-          <a href="#portfolio">ポートフォリオ</a>
-          <a href="#tech-stack">技術スタック</a>
-          <a href="#contributions">貢献</a>
-          <a href="#contact">お問い合わせ</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="#hero">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#tech-stack">Tech Stack</a></li>
+      <li><a href="#contributions">Contributions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <main class="container">
-    <section id="hero" class="hero">
-      <h1>友田健吾</h1>
-      <p>Web開発者・エンジニア</p>
-      <p>最新の技術を活用して、ユーザー体験を向上させることに情熱を持っています。</p>
+  <main class="scroll-smooth">
+    <section id="hero">
+      <div class="section-content">
+        <div class="card">
+          <div class="flex flex-col flex-md-row gap-6 items-center">
+            <div class="rounded-full bg-gray-200" style="width: 120px; height: 120px;"></div>
+            <div class="text-center text-md-left">
+              <h1 class="text-3xl font-bold mb-4">Tomoda Kengo</h1>
+              <p class="text-gray-600">
+                第三者検証会社でテスト自動化エンジニアをしています。ReplitやCursorでソフトウェアテストを効率化するプロダクトを開発しています。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="portfolio">
-      <h2>ポートフォリオ</h2>
-      <div class="card-container">
+      <div class="section-content">
+        <h2 class="section-heading">Portfolio</h2>
         <div class="card">
-          <div class="card-img">プロジェクト画像</div>
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fab fa-github"></i>
+              TestRoad
+            </div>
+          </div>
           <div class="card-content">
-            <h3>プロジェクト1</h3>
-            <p>Reactを使用したWebアプリケーション。ユーザー認証、データ管理、レスポンシブデザインを実装。</p>
+            <p>A testing automation tool</p>
+            <a href="https://github.com/tomodakengo/testroad" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block">
+              View Project →
+            </a>
           </div>
         </div>
         <div class="card">
-          <div class="card-img">プロジェクト画像</div>
-          <div class="card-content">
-            <h3>プロジェクト2</h3>
-            <p>TypeScriptとNode.jsを使用したバックエンドAPI。データベース設計とRESTful APIの構築。</p>
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fab fa-github"></i>
+              NoCode Playwright
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-img">プロジェクト画像</div>
           <div class="card-content">
-            <h3>プロジェクト3</h3>
-            <p>Next.jsとTailwind CSSを使用したeコマースサイト。SEO最適化とパフォーマンス改善。</p>
+            <p>No-code solution for Playwright testing</p>
+            <a href="https://github.com/tomodakengo/nocode-playwright" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block">
+              View Project →
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <section id="tech-stack">
-      <h2>技術スタック</h2>
-      <div class="tech-list">
-        <span class="tech-badge">JavaScript</span>
-        <span class="tech-badge">TypeScript</span>
-        <span class="tech-badge">React</span>
-        <span class="tech-badge">Node.js</span>
-        <span class="tech-badge">Next.js</span>
-        <span class="tech-badge">Express</span>
-        <span class="tech-badge">Tailwind CSS</span>
-        <span class="tech-badge">SQL</span>
-        <span class="tech-badge">MongoDB</span>
-        <span class="tech-badge">Git</span>
+      <div class="section-content">
+        <h2 class="section-heading">Tech Stack</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="badge">Ranorex</span>
+          <span class="badge">Playwright</span>
+          <span class="badge">TestRail</span>
+          <span class="badge">Docker</span>
+          <span class="badge">Django</span>
+          <span class="badge">NextJS</span>
+          <span class="badge">Laravel</span>
+          <span class="badge">runn</span>
+        </div>
       </div>
     </section>
 
     <section id="contributions">
-      <h2>貢献</h2>
-      <div class="card-container">
+      <div class="section-content">
+        <h2 class="section-heading">Contributions</h2>
         <div class="card">
-          <div class="card-content">
-            <h3>オープンソースプロジェクト</h3>
-            <p>いくつかのオープンソースプロジェクトにコントリビュートしています。バグ修正や機能追加を行ってきました。</p>
+          <div class="card-header">
+            <div class="card-title">
+              <i class="fab fa-github"></i>
+              docs(appium): Translated the migration guide to Appium2 into Japanese
+            </div>
           </div>
-        </div>
-        <div class="card">
           <div class="card-content">
-            <h3>技術記事</h3>
-            <p>Web開発に関する技術記事を執筆し、知識の共有に努めています。</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="badge badge-outline">appium</span>
+              <span class="badge badge-outline">document translation</span>
+            </div>
+            <a href="https://github.com/appium/appium/pull/20746" target="_blank" rel="noopener noreferrer">
+              View Contribution →
+            </a>
           </div>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2>お問い合わせ</h2>
-      <div class="contact-form">
-        <div class="form-group">
-          <label for="name">お名前</label>
-          <input type="text" id="name" placeholder="お名前を入力してください">
+      <div class="section-content">
+        <h2 class="section-heading">Get in touch</h2>
+        <div class="space-y-6">
+          <div class="social-icons">
+            <a href="https://github.com/tomodakengo" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/oln_t" target="_blank" rel="noopener noreferrer" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+          <div class="text-center">
+            <a href="https://forms.gle/pA99Cep6mzy5tFoH9" target="_blank" rel="noopener noreferrer">
+              <button class="btn">Contact Form</button>
+            </a>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="email">メールアドレス</label>
-          <input type="email" id="email" placeholder="メールアドレスを入力してください">
-        </div>
-        <div class="form-group">
-          <label for="message">メッセージ</label>
-          <textarea id="message" rows="5" placeholder="メッセージを入力してください"></textarea>
-        </div>
-        <button type="submit">送信</button>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 友田健吾. All rights reserved.</p>
-    </div>
-  </footer>
 </body>
-</html> 
+</html>
