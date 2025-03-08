@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { useState, useCallback, useEffect } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
@@ -6,41 +6,26 @@ import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 
-// ハッシュベースのロケーションフックを実装
-const useHashLocation = () => {
-  // 初期ロード時にハッシュが空なら"#/"を設定
+// SPAのリダイレクト対応用のカスタムフック
+const useLocationWithSPA = () => {
+  // GitHub Pages SPAリダイレクトのためのロジック
   useEffect(() => {
-    if (window.location.hash === "") {
-      window.location.hash = "/";
+    // URLが/?/で始まる場合、SPAリダイレクトからのリクエストなので
+    // 正しいURLに変換する
+    const { search } = window.location;
+    if (search && search.startsWith("?/")) {
+      const path = search.slice(2);
+      window.history.replaceState(null, "", "/" + path);
     }
   }, []);
 
-  const [location, setLocation] = useState(
-    window.location.hash.replace("#", "") || "/"
-  );
-
-  const handleHashChange = useCallback(() => {
-    const hashPath = window.location.hash.replace("#", "") || "/";
-    setLocation(hashPath);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("hashchange", handleHashChange);
-    // 初期ロード時にもハッシュの状態を反映
-    handleHashChange();
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, [handleHashChange]);
-
-  const navigate = useCallback((to: string) => {
-    window.location.hash = to;
-  }, []);
-
-  return [location, navigate];
+  // 通常のwouterのフックを使用
+  return useLocation();
 };
 
 function Router() {
   return (
-    <Switch hook={useHashLocation}>
+    <Switch hook={useLocationWithSPA}>
       <Route path="/" component={Home} />
       <Route component={NotFound} />
     </Switch>
