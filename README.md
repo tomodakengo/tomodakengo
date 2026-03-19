@@ -38,7 +38,7 @@
 
 | # | Phase | Period | Organization | Role | Testing Focus | Expected Outcome | Result |
 |:-:|:------|:-------|:-------------|:-----|:-------------|:-----------------|:------:|
-| 1 | Entry | 2022/04 - 2025/10 | Japan Knowledge Co., Ltd. | Automation Test Engineer | 自動テスト基盤の構築・運用 | テスト自動化スキルの確立 | **PASS** |
+| 1 | Entry | 2022/04 - 2025/10 | Nihon Knowledge Co., Ltd. | Automation Test Engineer | 自動テスト基盤の構築・運用 | テスト自動化スキルの確立 | **PASS** |
 | 2 | Growth | 2025/11 - present | Skillnote Inc. | QA Engineer | QA × Platform Engineering | 品質とDXの両立 | **PASS** |
 | 3 | Leadership | 2026/01 - present | NishiPRO Systems LLC | VPoE | レガシー脱却 × 組織づくり | 楽しいエンジニアリング組織の形成 | **PASS** |
 
